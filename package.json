@@ -5,26 +5,28 @@
     "url": "https://github.com/jingood2/awscdk-construct.git"
   },
   "scripts": {
-    "clobber": "npx projen clobber",
-    "compile": "npx projen compile",
-    "test:compile": "npx projen test:compile",
-    "test": "npx projen test",
     "build": "npx projen build",
-    "test:watch": "npx projen test:watch",
-    "test:update": "npx projen test:update",
     "bump": "npx projen bump",
-    "unbump": "npx projen unbump",
-    "publish:github": "npx projen publish:github",
-    "default": "npx projen default",
-    "watch": "npx projen watch",
-    "package": "npx projen package",
-    "eslint": "npx projen eslint",
+    "clobber": "npx projen clobber",
     "compat": "npx projen compat",
-    "publish:npm": "npx projen publish:npm",
+    "compile": "npx projen compile",
+    "default": "npx projen default",
     "docgen": "npx projen docgen",
+    "eslint": "npx projen eslint",
+    "package": "npx projen package",
+    "post-compile": "npx projen post-compile",
+    "pre-compile": "npx projen pre-compile",
+    "publish:github": "npx projen publish:github",
+    "publish:npm": "npx projen publish:npm",
+    "publish:pypi": "npx projen publish:pypi",
     "release": "npx projen release",
+    "test": "npx projen test",
+    "test:update": "npx projen test:update",
+    "test:watch": "npx projen test:watch",
+    "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
     "upgrade-projen": "npx projen upgrade-projen",
+    "watch": "npx projen watch",
     "projen": "npx projen"
   },
   "author": {
@@ -33,7 +35,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.95.2",
+    "@aws-cdk/assert": "^1.134.0",
     "@types/jest": "*",
     "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -56,7 +58,17 @@
     "typescript": "^4.5.2"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-apigatewayv2": "^1.134.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "^1.134.0",
+    "@aws-cdk/aws-lambda": "^1.134.0",
+    "@aws-cdk/core": "^1.134.0",
     "constructs": "^3.2.27"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigatewayv2": "^1.134.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "^1.134.0",
+    "@aws-cdk/aws-lambda": "^1.134.0",
+    "@aws-cdk/core": "^1.134.0"
   },
   "bundledDependencies": [],
   "keywords": [
@@ -100,7 +112,7 @@
     "preset": "ts-jest",
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
+        "tsconfig": "tsconfig.dev.json"
       }
     }
   },
@@ -108,7 +120,12 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "python": {
+        "distName": "cdk-sample-lib",
+        "module": "cdk_sample_lib"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
